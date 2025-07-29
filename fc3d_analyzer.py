@@ -65,7 +65,7 @@ ENABLE_OPTUNA_OPTIMIZATION = True
 # --- 策略开关配置 ---
 # --------------------------
 # 是否启用最终推荐组合层面的"反向思维"策略 (移除得分最高的几注)
-ENABLE_FINAL_COMBO_REVERSE = False
+ENABLE_FINAL_COMBO_REVERSE = True
 # 在启用反向思维并移除组合后，是否从候选池中补充新的组合以达到目标数量
 ENABLE_REVERSE_REFILL = True
 
@@ -81,7 +81,7 @@ POSITION_NAMES = ['百位', '十位', '个位']
 # --- 分析与执行参数配置 ---
 # --------------------------
 # 机器学习模型使用的滞后特征阶数 (e.g., 使用前1、3、5、10期的数据作为特征)
-ML_LAG_FEATURES = [1, 3, 5, 10]
+ML_LAG_FEATURES = [1, 3, 5,8, 10]
 # 用于生成乘积交互特征的特征对
 ML_INTERACTION_PAIRS = [('sum_value', 'span_value')]
 # 用于生成自身平方交互特征的特征
@@ -89,13 +89,13 @@ ML_INTERACTION_SELF = ['span_value']
 # 计算号码"近期"出现频率时所参考的期数窗口大小
 RECENT_FREQ_WINDOW = 20
 # 在分析模式下，进行策略回测时所评估的总期数
-BACKTEST_PERIODS_COUNT = 100
+BACKTEST_PERIODS_COUNT = 30
 # 在优化模式下，每次试验用于快速评估性能的回测期数 (数值越小优化越快)
 OPTIMIZATION_BACKTEST_PERIODS = 20
 # 在优化模式下，Optuna 进行参数搜索的总试验次数
 OPTIMIZATION_TRIALS = 100
 # 训练机器学习模型时，一个数字在历史数据中至少需要出现的次数
-MIN_POSITIVE_SAMPLES_FOR_ML = 25
+MIN_POSITIVE_SAMPLES_FOR_ML = 10
 
 # ==============================================================================
 # --- 默认权重配置 (这些参数可被Optuna优化) ---
