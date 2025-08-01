@@ -61,13 +61,13 @@ jobs:
           echo "No fc3d_analysis_output_*.txt files found, or latest_report_file variable is empty. Skipping copy."
         fi
 
-    - name: Clean old reports - keep only latest 5
+    - name: Clean old reports - keep only latest 10
       run: |
         set -e
         echo "--- Cleaning old analysis reports ---"
         mapfile -t reports < <(find . -maxdepth 1 -name 'fc3d_analysis_output_*.txt' -print0 | xargs -0 ls -1 | sort)
         count=${#reports[@]}
-        keep=5
+        keep=10
         echo "Found $count reports. Configured to keep $keep latest."
         if [ "$count" -gt "$keep" ]; then
           num_to_delete=$((count - keep))
